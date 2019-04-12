@@ -10,8 +10,7 @@
 {% block header_site_navigation %}
   <nav class="section navigation">
     <ul class="nav nav-pills">
-      {% block header_site_navigation_tabs %} {{ h.build_nav_main( ('search', _('Datasets')),
-        ('home.about', _('About')) ) }} {% endblock %}
+      {% block header_site_navigation_tabs %} {{ h.build_nav_main( ('search', _('Datasets')), ('group_index', _('Groups')), ('home.about', _('About')) ) }} {% endblock %}
       <li><a href="http://www.comune.torino.it/aperto/faq">FAQ</a></li>
     </ul>
   </nav>
