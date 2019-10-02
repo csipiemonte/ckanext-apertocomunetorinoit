@@ -1,9 +1,6 @@
-
 import ckan.plugins as plugins
-import logging
 import ckan.plugins.toolkit as plugins_toolkit
-
-from ckan.common import _, ungettext
+import ckanext.apertocomunetorinoit.helpers as helpers
 
 try:
    from ckan.lib.plugins import DefaultTranslation
@@ -11,17 +8,24 @@ except ImportError:
    class DefaultTranslation():
        pass
 
-log = logging.getLogger(__name__)
-
 class ApertoComuneTorinoPlugin(plugins.SingletonPlugin, DefaultTranslation):
 
     # IConfigurer
     plugins.implements(plugins.IConfigurer)
 
-    # Implementation of IConfigurer
-    # ------------------------------------------------------------
+    # ITemplateHelpers
+    plugins.implements(plugins.ITemplateHelpers)
+
+    # -------- IConfigurer implementations -------- #
 
     def update_config(self, config):
-        plugins_toolkit.add_public_directory(config, 'public')
-        plugins_toolkit.add_template_directory(config, 'templates')
+      plugins_toolkit.add_public_directory(config, 'public')
+      plugins_toolkit.add_template_directory(config, 'templates')
 
+    # -------- ITemplateHelpers implementations -------- #
+
+    def get_helpers(self):
+      aperTO_helpers = {
+          'traking_views': helpers.traking_views,
+      }
+      return aperTO_helpers
