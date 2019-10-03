@@ -1,5 +1,5 @@
 import ckan.plugins as plugins
-import ckan.plugins.toolkit as plugins_toolkit
+import ckan.plugins.toolkit as toolkit
 import ckanext.apertocomunetorinoit.helpers as helpers
 
 try:
@@ -16,16 +16,32 @@ class ApertoComuneTorinoPlugin(plugins.SingletonPlugin, DefaultTranslation):
     # ITemplateHelpers
     plugins.implements(plugins.ITemplateHelpers)
 
+    # ITranslation
+    if toolkit.check_ckan_version(min_version='2.5.0'):
+      plugins.implements(plugins.ITranslation, inherit=True)
+
     # -------- IConfigurer implementations -------- #
 
     def update_config(self, config):
-      plugins_toolkit.add_public_directory(config, 'public')
-      plugins_toolkit.add_template_directory(config, 'templates')
+      toolkit.add_public_directory(config, 'public')
+      toolkit.add_template_directory(config, 'templates')
 
     # -------- ITemplateHelpers implementations -------- #
 
     def get_helpers(self):
       aperTO_helpers = {
-          'traking_views': helpers.traking_views,
+        'traking_views_count': helpers.traking_views_count,
+        'traking_views': helpers.traking_views,
+        'traking_resource_views_count': helpers.traking_resource_views_count,
+        'traking_resource_views': helpers.traking_resource_views,
       }
       return aperTO_helpers
+
+    # ------------- ITranslation ---------------#
+
+    def i18n_domain(self):
+        '''Change the gettext domain handled by this plugin
+        This implementation assumes the gettext domain is
+        ckanext-{extension name}, hence your pot, po and mo files should be
+        named ckanext-{extension name}.mo'''
+        return 'ckanext-{name}'.format(name='apertocomunetorinoit')

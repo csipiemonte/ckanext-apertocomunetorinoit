@@ -10,7 +10,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='ckanext-apertocomunetorinoit',
-    version = '0.1.0',
+    version = '1.0.0',
     description="CKAN customizations for aperto.comune.torino.it",
     long_description="CKAN customizations for aperto.comune.torino.it",
     author="Carlo Peraudo",
