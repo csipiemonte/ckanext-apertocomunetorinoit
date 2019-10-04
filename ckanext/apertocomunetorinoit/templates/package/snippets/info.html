@@ -2,7 +2,7 @@
 
 {% block nums %}
   {% set num_followers = h.follow_count('dataset', pkg.id) %}
-  {% set num_traking_views = h.traking_views_count(pkg.id) %}
+  {% set num_tracking_views = h.tracking_views_count(pkg.id) %}
   <div class="nums">
     <dl>
       <dt>{{ _('Followers') }}</dt>
@@ -10,7 +10,7 @@
     </dl>
     <dl>
       <dt>{{ _('Tot Views') }}</dt>
-      <dd>{{ h.SI_number_span(num_traking_views) }}</dd>
+      <dd>{{ h.SI_number_span(num_tracking_views) }}</dd>
     </dl>
   </div>
 {% endblock %}

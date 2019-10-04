@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 import ckanext.apertocomunetorinoit.helpers as helpers
@@ -30,10 +32,11 @@ class ApertoComuneTorinoPlugin(plugins.SingletonPlugin, DefaultTranslation):
 
     def get_helpers(self):
       aperTO_helpers = {
-        'traking_views_count': helpers.traking_views_count,
-        'traking_views': helpers.traking_views,
-        'traking_resource_views_count': helpers.traking_resource_views_count,
-        'traking_resource_views': helpers.traking_resource_views,
+        'tracking_views_count': helpers.tracking_views_count,
+        'tracking_views': helpers.tracking_views,
+        'tracking_resource_views_count': helpers.tracking_resource_views_count,
+        'tracking_resource_views': helpers.tracking_resource_views,
+        'dataset_tracking_views_sum': helpers.dataset_tracking_views_sum,
       }
       return aperTO_helpers
 

@@ -1,29 +1,27 @@
-{% set stats = h.get_site_statistics() %}
+{# Differisce dal template CKAN per la rimozione delle statistiche sulle organizzazioni e per l'aggiunta di quella sulle visite complessive dei datasets. #}
 
-<div class="box stats">
-  <div class="inner">
-    <h3>{{ _('{0} statistics').format(g.site_title) }}</h3>
-    <ul>
-      {% block stats_group %}
-      <li>
-        <a href="{{ h.url_for(controller='package', action='search') }}">
-          <strong>{{ h.SI_number_span(stats.dataset_count) }}</strong>
-          {{ _('dataset') if stats.dataset_count == 1 else _('datasets') }}
-        </a>
-      </li>
-      <!--li>
-        <a href="{{ h.url_for(controller='organization', action='index') }}">
-          <strong>{{ h.SI_number_span(stats.organization_count) }}</strong>
-          {{ _('organization') if stats.organization_count == 1 else _('organizations') }}
-        </a>
-      </li-->
-      <li>
-        <a href="{{ h.url_for(controller='group', action='index') }}">
-          <strong>{{ h.SI_number_span(stats.group_count) }}</strong>
-          {{ _('group') if stats.group_count == 1 else _('groups') }}
-        </a>
-      </li>
-      {% endblock %}
-    </ul>
-  </div>
-</div>
+{% ckan_extends %}
+
+{% set stats = h.get_site_statistics() %}
+{% set count = h.dataset_tracking_views_sum() %}
+
+{% block stats_group %}
+  <li>
+    <a href="{{ h.url_for(controller='package', action='search') }}">
+      <strong>{{ h.SI_number_span(stats.dataset_count) }}</strong>
+      {{ _('dataset') if stats.dataset_count == 1 else _('datasets') }}
+    </a>
+  </li>
+  <li>
+    <a href="{{ h.url_for(controller='package', action='search') }}">
+      <strong>{{ h.SI_number_span(count) }}</strong>
+      visualizzazioni
+    </a>
+  </li>
+  <li>
+    <a href="{{ h.url_for(controller='group', action='index') }}">
+      <strong>{{ h.SI_number_span(stats.group_count) }}</strong>
+      {{ _('group') if stats.group_count == 1 else _('groups') }}
+    </a>
+  </li>
+{% endblock %}
