@@ -10,13 +10,18 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='ckanext-apertocomunetorinoit',
+
     version = '1.0.0',
+
     description="CKAN customizations for aperto.comune.torino.it",
     long_description="CKAN customizations for aperto.comune.torino.it",
+
     author="Carlo Peraudo",
     author_email="carlo.peraudo@consulenti.csi.it",
+
     url='http://aperto.comune.torino.it',
     license='AGPL',
+
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
         # How mature is this project? Common values are
@@ -33,19 +38,32 @@ setup(
         'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
     ],
+
     packages=find_packages(exclude=['contrib', 'docs', 'tests*']),
+
     namespace_packages=['ckanext', 'ckanext.apertocomunetorinoit'],
     include_package_data=True,
     package_data={
     },
+
     # Although 'package_data' is the preferred approach, in some case you may
     # need to place data files outside of your packages.
     # see http://docs.python.org/3.4/distutils/setupscript.html#installing-additional-files
     # In this case, 'data_file' will be installed into '<sys.prefix>/my_data'
     data_files=[],
     install_requires=[],
+
     entry_points='''
         [ckan.plugins]
         apertocomunetorinoit = ckanext.apertocomunetorinoit.plugin:ApertoComuneTorinoPlugin
-    '''
+    ''',
+
+    # aperTO Translations
+    message_extractors={
+        'ckanext': [
+            ('**.py', 'python', None),
+            ('**.js', 'javascript', None),
+            ('**/templates/**.html', 'ckan', None),
+        ],
+    }
 )
