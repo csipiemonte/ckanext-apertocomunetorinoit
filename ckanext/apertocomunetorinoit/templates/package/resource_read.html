@@ -1,11 +1,11 @@
 {% ckan_extends %}
 
 {% set res = c.resource %}
-{% set count = h.tracking_resource_views_count(res.url) %}
+{% set download_count = h.tracking_resource_downloads_count(res.url) %}
 
 {% block resource_read_url %}
-  {% if count > 0 %}
-    <p> {{ h.tracking_resource_views(count) }} </p>
+  {% if download_count > 0 %}
+    <p> {{ h.tracking_resource_downloads(download_count) }} </p>
   {% endif %}
   {% if res.url and h.is_url(res.url) %}
     <p class="text-muted ellipsis">{{ _('URL:') }} <a class="resource-url-analytics" href="{{ res.url }}" title="{{ res.url }}">{{ res.url }}</a></p>

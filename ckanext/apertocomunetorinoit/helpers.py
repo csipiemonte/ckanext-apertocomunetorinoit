@@ -27,8 +27,8 @@ def tracking_views(package_id):
     return h.snippet('snippets/package_tracking_item.html',
                    title=title, number=number, min=1)
 
-def tracking_resource_views_count(url):
-    '''Restituisce il numero di visualizzazioni totali di una data risorsa
+def tracking_resource_downloads_count(url):
+    '''Restituisce il numero di downloads totali di una data risorsa
 
        :param url: url della risorsa
        :rtype: number
@@ -41,15 +41,23 @@ def tracking_resource_views(number, min=1):
     return h.snippet('snippets/package_tracking_item.html',
                    title=title, number=number, min=min)
 
+def tracking_resource_downloads(number, min=1):
+    title = ungettext('{number} download', '{number} downloads', number)
+    return h.snippet('snippets/resource_tracking_item.html',
+                   title=title, number=number, min=min)
+
 def dataset_tracking_views_sum():
     '''Restituisce il numero di visualizzazioni totali ottenute sommando quelle di ciascun package (dataset).
        Il codice sottostante e' scritto secondo la sintassi di SQLAlchemy (the Python SQL toolkit and Object Relational Mapper).
 
        :rtype: number
     '''
-
-    obj = meta.Session.query(func.sum(TrackingSummary.running_total).label('total_views')).\
+    sq = meta.Session.query(TrackingSummary.running_total.label('running_total')).\
                 autoflush(False).\
-                join(Package, Package.id == TrackingSummary.package_id)
+                join(Package, Package.id == TrackingSummary.package_id).\
+                order_by(TrackingSummary.tracking_date.desc()).\
+                first().subquery()
+
+    obj = meta.Session.query(func.sum(sq.c.running_total).label('total_views'))
     data = obj.first()
     return data.total_views
