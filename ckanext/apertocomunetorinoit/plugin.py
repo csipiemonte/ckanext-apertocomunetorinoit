@@ -35,7 +35,6 @@ class ApertoComuneTorinoPlugin(plugins.SingletonPlugin, DefaultTranslation):
         'tracking_views_count': helpers.tracking_views_count,
         'tracking_views': helpers.tracking_views,
         'tracking_resource_downloads_count': helpers.tracking_resource_downloads_count,
-        'tracking_resource_views': helpers.tracking_resource_views,
         'tracking_resource_downloads': helpers.tracking_resource_downloads,
         'dataset_tracking_views_sum': helpers.dataset_tracking_views_sum,
       }
