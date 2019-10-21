@@ -2,11 +2,11 @@
 {% if number_views >= min %}
 <ul>
   <li class="list-viewdownload" title="{{ title_views.format(number=number_views) }}" xmlns="http://www.w3.org/1999/xhtml">
-  	<i class="popular ckan-icon aperto-open-eye"></i>  <strong>{{ number_views }}</strong>
+    <i class="popular ckan-icon aperto-open-eye"></i>  <strong>{{ number_views }}</strong>
   </li>
   {% if number_downloads >= min %}
     <li class="list-viewdownload" title="{{ title_downloads.format(number=number_downloads) }}" xmlns="http://www.w3.org/1999/xhtml">
-  	  <i class="popular ckan-icon aperto-download"></i>  <strong>{{ number_downloads }}</strong>
+      <i class="popular ckan-icon aperto-download"></i>  <strong>{{ number_downloads }}</strong>
     </li>
   {% endif %}
 </ul>
