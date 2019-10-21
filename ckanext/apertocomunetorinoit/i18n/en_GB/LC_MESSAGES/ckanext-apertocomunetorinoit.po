@@ -25,6 +25,10 @@ msgstr "FAQ"
 msgid "Stories"
 msgstr "Stories"
 
-#: ckanext/apertocomunetorinoit/templates/package/snippets/info.html:12
+#: ckanext/apertocomunetorinoit/templates/package/snippets/info.html:9
 msgid "Tot Views"
 msgstr "Views"
+
+#: ckanext/apertocomunetorinoit/templates/package/snippets/info.html:13
+msgid "Tot Downloads"
+msgstr "Downloads"

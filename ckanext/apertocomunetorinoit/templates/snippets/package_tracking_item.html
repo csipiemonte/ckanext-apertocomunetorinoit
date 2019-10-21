@@ -1,4 +1,11 @@
-{# show the open eye icon with the number of the total views #}
-{% if number >= min %}
-<span class="popular ckan-icon aperto-open-eye" title="{{ title.format(number=number) }}" xmlns="http://www.w3.org/1999/xhtml">{{ number }}</span>
+{# show the open eye icon with the number of the total views and the number of the total downloads #}
+{% if number_views >= min %}
+<ul>
+  <li class="list-viewdownload" title="{{ title_views.format(number=number_views) }}" xmlns="http://www.w3.org/1999/xhtml">
+  	<i class="popular ckan-icon aperto-open-eye"></i>  <strong>{{ number_views }}</strong>
+  </li>
+  <li class="list-viewdownload" title="{{ title_downloads.format(number=number_downloads) }}" xmlns="http://www.w3.org/1999/xhtml">
+  	<i class="popular ckan-icon aperto-download"></i>  <strong>{{ number_downloads }}</strong>
+  </li>
+</ul>
 {% endif %}

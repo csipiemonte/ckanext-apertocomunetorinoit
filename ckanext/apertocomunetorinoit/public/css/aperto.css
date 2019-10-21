@@ -1,8 +1,13 @@
+.list-viewdownload {
+  padding-right: +16px;
+  list-style: none;
+  display: inline-block;
+}
+
 .aperto-download, .aperto-open-eye {
   display: inline-block;
   background: url('../../images/sprite-aperto-icons.png') no-repeat;
   overflow: visible;
-  text-indent: +25px;
   text-align: right;
   font-weight: bold;
 }
