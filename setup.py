@@ -11,7 +11,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 setup(
     name='ckanext-apertocomunetorinoit',
 
-    version = '1.0.2',
+    version = '1.0.3',
 
     description="CKAN customizations for aperto.comune.torino.it",
     long_description="CKAN customizations for aperto.comune.torino.it",

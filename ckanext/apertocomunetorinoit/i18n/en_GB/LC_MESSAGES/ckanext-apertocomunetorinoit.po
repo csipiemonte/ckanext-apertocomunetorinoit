@@ -17,6 +17,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.5.3\n"
 
+#: ckanext/apertocomunetorinoit/templates/home/snippets/stats.html:22
+msgid "dataset views"
+msgstr "dataset views"
+
+#: ckanext/apertocomunetorinoit/templates/home/snippets/stats.html:9
+msgid "Dataset Stats"
+msgstr "Dataset Stats"
+
+#: ckanext/apertocomunetorinoit/templates/home/snippets/stats.html:22
+msgid "from date"
+msgstr "from"
+
 #: ckanext/apertocomunetorinoit/templates/header.html:15
 msgid "FAQ"
 msgstr "FAQ"
