@@ -1,0 +1,138 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _('API Ckan') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active">{% link_for _('API Ckan'), 'api' %}</li>
+{% endblock %}
+
+{% block primary %}
+  <article class="module" role="main">
+    <div class="module-content">
+        <h2>Guida per l'utilizzo delle API di CKAN</h2>
+        <p>In questa pagina vengono mostrati alcuni esempi dei possibili utilizzi che si possono fare delle API di CKAN,
+          disponibili per tutti coloro che intendono scrivere programmi che interagiscano con i dati del portale AperTO o che
+          semplicemente vogliono estrapolare dataset relativi a quanto caricato sul sito.</p>
+        <p>Disponibile anche la <a href="https://docs.ckan.org/en/2.8/api/">guida ufficiale della CKAN API in lingua
+            inglese</a>.</p>
+        <p>Per poter effettuare una chiamata alle API di CKAN su AperTO è innanzitutto necessario aprire una nuova scheda nel
+          proprio browser web e scrivere l’indirizzo <a
+            href="http://aperto.comune.torino.it/api/3/action/">http://aperto.comune.torino.it/api/3/action/</a> seguito dai
+          comandi opportuni (ad esempio http://aperto.comune.torino.it/api/3/action/package_list); per ogni comando è spesso
+          possibile specificare diversi parametri, antecedendo un ‘?’ al primo parametro e una ‘&amp;’ prima di ogni parametro
+          successivo (ad esempio http://aperto.comune.torino.it/api/3/action/package_search?q=&amp;rows=1000).</p>
+        <p>Seguono alcuni esempi di comandi utilizzabili sul portale (le risposte vengono fornite in formato JSON).</p>
+        <ul>
+          <li>Comando <strong>package_list</strong>: restituisce la lista dei nomi dei dataset del sito (<a
+              href="http://aperto.comune.torino.it/api/3/action/package_list">
+              http://aperto.comune.torino.it/api/3/action/package_list</a>).<br>
+            Parametri:
+            <ul>
+              <li>"limit" (valore intero - se specificato permette di spezzare la lista di dataset in pagine di al più n
+                dataset), es: <a
+                  href="http://aperto.comune.torino.it/api/3/action/package_list?limit=6">http://aperto.comune.torino.it/api/3/action/package_list?limit=6</a>;
+              </li>
+              <li>"offset" (valore intero – se il parametro "limit" è stato specificato, questo parametro permette di indicare
+                da che numero partire ad elencare i dataset), es: <a
+                  href="http://aperto.comune.torino.it/api/3/action/package_list?limit=6&amp;offset=3">http://aperto.comune.torino.it/api/3/action/package_list?limit=6&amp;offset=3</a>.
+              </li>
+            </ul>
+          </li>
+        
+        
+          <li>Comando <strong>group_list</strong>: restituisce la lista dei nomi dei gruppi tematici dei dataset del sito (<a
+              href="http://aperto.comune.torino.it/api/3/action/group_list">http://aperto.comune.torino.it/api/3/action/group_list</a>).<br>
+            Parametri:
+            <ul>
+              <li>"order_by" (è possibile specificare il valore ‘name asc’ per ottenere un ordinamento per nome crescente, ‘name
+                desc’ per ottenere il medesimo ordinamento in ordine decrescente, ‘package_count asc’ e ‘package_count desc’ per
+                ordinare i risultati per numero di dataset contenuti rispettivamente crescente o decrescente), es: <a
+                  href="http://aperto.comune.torino.it/api/3/action/group_list?order_by=package_count%20asc">http://aperto.comune.torino.it/api/3/action/group_list?order_by=package_count%20asc</a>
+                ;</li>
+              <li>"all_fields" (valore booleano – se valorizzato a "true" restituisce tutti i metadati relativi ad ogni gruppo,
+                tra cui il numero di dataset contenuti), es: <a
+                  href="http://aperto.comune.torino.it/api/3/action/group_list?all_fields=true">http://aperto.comune.torino.it/api/3/action/group_list?all_fields=true</a>,
+              </li>
+              <li>È ovviamente possibile combinare i due parametri, ad esempio scrivendo: <a
+                  href="http://aperto.comune.torino.it/api/3/action/group_list?order_by=name%20asc&amp;all_fields=true">http://aperto.comune.torino.it/api/3/action/group_list?order_by=name%20asc&amp;all_fields=true</a>.
+              </li>
+            </ul>
+          </li>
+        
+          <li>Comando <strong>tag_list</strong>: restituisce la lista di tutti i tag utilizzati per metadatare i dataset sul
+            portale (<a
+              href="http://aperto.comune.torino.it/api/3/action/tag_list">http://aperto.comune.torino.it/api/3/action/tag_list</a>):<br>
+            Parametri:
+            <ul>
+              <li>"query" (stringa – permette di cercare e restituire solo i tag che contengono la stringa specificata), es: <a
+                  href="http://aperto.comune.torino.it/api/3/action/tag_list?query=consiglio">http://aperto.comune.torino.it/api/3/action/tag_list?query=consiglio</a>;
+              </li>
+              <li>"all_fields" (valore booleano – se valorizzato a "true" restituisce tutti i metadati relativi ad ogni tag),
+                es: <a
+                  href="http://aperto.comune.torino.it/api/3/action/tag_list?all_fields=true">http://aperto.comune.torino.it/api/3/action/tag_list?all_fields=true</a>;
+              </li>
+              <li>È ovviamente possibile combinare i due parametri, ad esempio scrivendo: <a
+                  href="http://aperto.comune.torino.it/api/3/action/tag_list?query=consiglio&amp;all_fields=true">http://aperto.comune.torino.it/api/3/action/tag_list?query=consiglio&amp;all_fields=true</a>.
+              </li>
+            </ul>
+          </li>
+        
+          <li>Comando <strong>package_show</strong>: restituisce i metadati di un determinato dataset tramite il suo id.<br>
+            Parametri:
+            <ul>
+              <li>"id" – parametro obbligatorio (è necessario specificare l’id alfanumerico del dataset, reperibile nella
+                tabella "Informazioni supplementari" presente nella pagina di ogni risorsa – ad esempio questa <a
+                  href="http://aperto.comune.torino.it/dataset/servizio-di-refezione-scolastica-2018/resource/b043ff37-f75e-4d6f-9ba3-09b518773100#">http://aperto.comune.torino.it/dataset/servizio-di-refezione-scolastica-2018/resource/b043ff37-f75e-4d6f-9ba3-09b518773100#</a>.
+                È inoltre possibile specificare, al posto dell’id alfanumerico, il titolo del dataset così come mostrato nella
+                URL. Ad esempio se si intendono visualizzare i metadati del dataset <a
+                  href="http://aperto.comune.torino.it/dataset/servizio-di-ristorazione-scolastica-2018">http://aperto.comune.torino.it/dataset/servizio-di-ristorazione-scolastica-2018</a>
+                sarà sufficiente usare come id "servizio-di-ristorazione-scolastica-2018"). Esempi:<br>
+                - <a href="http://aperto.comune.torino.it/api/3/action/package_show?id=farmacie">
+                  http://aperto.comune.torino.it/api/3/action/package_show?id=farmacie</a>,<br>
+                - <a
+                  href="http://aperto.comune.torino.it/api/3/action/package_show?id=servizio-di-ristorazione-scolastica-2018">http://aperto.comune.torino.it/api/3/action/package_show?id=servizio-di-ristorazione-scolastica-2018</a>,<br>
+                - <a
+                  href="http://aperto.comune.torino.it/api/3/action/package_show?id=b043ff37-f75e-4d6f-9ba3-09b518773100">http://aperto.comune.torino.it/api/3/action/package_show?id=b043ff37-f75e-4d6f-9ba3-09b518773100</a>
+              </li>
+            </ul>
+          </li>
+        
+          <li>Comando <strong>package_search</strong>: restituisce una lista di dataset, comprensivi di metadati, fornendo come
+            input di ricerca una stringa.<br>
+            Parametri:
+            <ul>
+              <li>"q": parametro obbligatorio (stringa - mostra tutti i dataset che contengono la stringa specificata, sia nel
+                titolo, che nella descrizione, che nei metadati - es. nei tag - ma NON all’interno del dataset stesso), es: <a
+                  href="http://aperto.comune.torino.it/api/3/action/package_search?q=metropolitana">http://aperto.comune.torino.it/api/3/action/package_search?q=metropolitana</a>
+                (mostra tutti i dataset che contengono la parola "metropolitana"). È possibile non specificare alcuna stringa
+                come valore del parametro per farsi restituire la lista completa di dataset pubblicati sul portale (di default
+                ne vengono mostrati 9, ma è possibile espandere la lista tramite i parametri indicati più avanti), es:
+                http://aperto.comune.torino.it/api/3/action/package_search?q=</li>
+              <li>"rows" (intero – permette di specificare quanti dataset mostrare per pagina, il valore massimo è 1000), es: <a
+                  href="http://aperto.comune.torino.it/api/3/action/package_search?q=&amp;rows=1000">http://aperto.comune.torino.it/api/3/action/package_search?q=&amp;rows=1000</a>
+              </li>
+              <li>"start" (intero - funziona come il parametro "offset" del comando "package_list", indicando da che numero
+                partire ad elencare i dataset), es: <a
+                  href="http://aperto.comune.torino.it/api/3/action/package_search?q=&amp;rows=1000&amp;start=1000">http://aperto.comune.torino.it/api/3/action/package_search?q=&amp;rows=1000&amp;start=1000</a>
+                (mostra tutti i dataset a partire dal numero 1000 – massimo 1000 per pagina).<br><br>
+                Se si volessero quindi ottenere tutti i dataset comprensivi di metadati presenti sul portale, nel caso in cui
+                questi fossero più di 1000, occorrerebbe quindi eseguire più query, salvando i risultati e unendoli in un
+                secondo momento:<br>
+                - <a
+                  href="http://aperto.comune.torino.it/api/3/action/package_search?q=&amp;rows=1000">http://aperto.comune.torino.it/api/3/action/package_search?q=&amp;rows=1000</a>
+                per ottenere i dataset da 0 a 999;<br>
+                - <a
+                  href="http://aperto.comune.torino.it/api/3/action/package_search?q=&amp;rows=1000&amp;start=1000">http://aperto.comune.torino.it/api/3/action/package_search?q=&amp;rows=1000&amp;start=1000</a>
+                per ottenere i dataset da 1000 a 1999 (chiaramente la numerazione terminerà con l’ultimo dataset disponibile);
+              </li>
+              - <a
+                href="http://aperto.comune.torino.it/api/3/action/package_search?q=&amp;rows=1000&amp;start=2000">http://aperto.comune.torino.it/api/3/action/package_search?q=&amp;rows=1000&amp;start=2000</a>
+              per ottenere i dataset da 2000 a 2999 e così via.
+            </ul>
+          </li>
+        </ul>
+    </div>
+  </article>
+{% endblock %}
+
+{% block secondary %}{% endblock %}

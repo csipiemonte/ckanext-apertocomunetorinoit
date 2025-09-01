@@ -32,7 +32,9 @@ class ApertoComuneTorinoPlugin(plugins.SingletonPlugin, DefaultTranslation):
     def get_blueprint(self):
         blueprint = Blueprint('apertocomunetorinoit', self.__module__)
 
-        blueprint.add_url_rule(rule='/faq', view_func=self.render_faq_view, methods=[u'GET'])
+        blueprint.add_url_rule(rule='/faq',     view_func=self.render_faq_view, methods=[u'GET'])
+        blueprint.add_url_rule(rule='/licenze', view_func=self.render_licenze_view, methods=[u'GET'])
+        blueprint.add_url_rule(rule='/api',     view_func=self.render_api_view, methods=[u'GET'])
         return blueprint
 
     # -------- IConfigurer implementations -------- #
@@ -65,3 +67,9 @@ class ApertoComuneTorinoPlugin(plugins.SingletonPlugin, DefaultTranslation):
 
     def render_faq_view(self):
       return base.render('faq.html')
+    
+    def render_licenze_view(self):
+      return base.render('licenze.html')
+    
+    def render_api_view(self):
+      return base.render('api.html')

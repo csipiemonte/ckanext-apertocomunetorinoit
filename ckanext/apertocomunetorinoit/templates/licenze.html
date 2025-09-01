@@ -1,0 +1,22 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _('Licenze OpenData') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active">{% link_for _('Licenze OpenData'), 'licenze' %}</li>
+{% endblock %}
+
+{% block primary %}
+  <article class="module" role="main">
+    <div class="module-content">
+      <p>I dati presenti sul catalogo sono rilasciati con licenza <strong><a href="https://creativecommons.org/licenses/by/4.0/legalcode.it">Creative Commons Attribuzione 4.0 (CC BY)</a></strong>, eccetto ove diversamente specificato.</p>
+      I dati sono resi disponibili a chiunque voglia utilizzarli per qualsiasi scopo consentito dalla legge. Chi ne effettua il download<!-- manuale o tramite API -->, si assume la piena responsabilità sull'utilizzo dei dati e sulle conseguenze che possano derivare a terzi.<br>
+      I dati pubblicati sul presente catalogo aperTO della Città di Torino sono raccolti e rilasciati dai diversi uffici cittadini che ne hanno la titolarità e la responsabilità.<p></p>
+      <p>I dati sono pubblicati in linea con la direttiva 2013/37/UE (che ha modificato la precedente direttiva 2003/98/UE), con le quali il Parlamento europeo ha vincolato gli stati membri a pubblicare i dati in possesso dell'amministrazione pubblica ed a permetterne l'utilizzo ed il riutilizzo anche a fini commerciali. La pubblicazione dei dati, di conseguenza, è conforme a quanto stabilito dal D. Lgs 36/2006 "Attuazione della direttiva 2003/98/UE relativa al riutilizzo dei documenti nel settore pubblico" e dal D.Leg. 102/2015 "Attuazione della direttiva 2013/37/UE che modifica la direttiva 2003/98/CE relativa al riutilizzo dell’informazione del settore pubblico".<br>
+      I dati presenti nel catalogo, sono quindi pubblicati in applicazione del D. Lgs 82/2005 e s.m.i. "Codice dell’Amministrazione Digitale (CAD)", con particolare riferimento al Capo V del medesimo decreto riguardante i Dati della pubbliche amministrazioni.</p>
+      <p>Il catalogo è un nodo della rete nazionale e Europea dei portali dei dati sviluppato in linea con le Linee guida nazionali e parte integrante del Piano triennale dell’informatica nella pubblica amministrazione.</p>    
+    </div>
+  </article>
+{% endblock %}
+
+{% block secondary %}{% endblock %}
