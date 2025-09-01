@@ -1,0 +1,49 @@
+{% extends "page.html" %}
+
+{% block subtitle %}{{ _('About') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active">{% link_for _('Faq'), 'home.about' %}</li>
+{% endblock %}
+
+{% block primary %}
+  <article class="module" role="main">
+    <div class="module-content">
+      {% block about %}
+      <div class="module-content">
+        <p><strong>Quale sistema di georeferenziazione viene utilizzato ?</strong></p>
+        <p>La georeferenziazione, ovvero l’indicazione del punto su una mappa secondo coordinate geografiche, laddove non diversamente indicato, è da riferirsi al sistema di coordinate Gauss Boaga Roma40 Fuso Ovest. Rispetto all'inquadramento dell'Istituto Geografico Militare Italiano vi è una piccola differenza dovuta ad epoche di calcolo differenti, quella catastale fu realizzata precedentemente al completamento delle compensazioni finali ed i ricalcoli di epoche successive fatti da I.G.M.I. Tale disallineamento è apprezzabile solo nelle misurazioni topografiche di precisione e può corrispondere a circa 20/30cm.</p>
+        <p>Riferimento geodetico su: Rete e Sottorete Trigonometrica Catastale</p>
+        <p>Il valore assunto dai campo nel Dataset è nel formato:</p>
+        <ul>
+          <li>POLYGON(, …), laddove vengono identificate delle aree, ovvero dei perimetri, viceversa nel formato</li>
+          <li>POINT() nei casi in cui il luogo venga identificato da un unico punto. Talvolta le coordinate puntuali possono presentarsi in due campi separati, con intestazioni POINT_X e POINT_Y.</li>
+        </ul>
+        
+        <p><strong>Come si possono convertire le coordinate geografiche presenti in un altro sistema di riferimento ?</strong></p>
+        <p>Al fine di convertire i dati in un sistema di riferimento differente, suggeriamo l'utilizzo di un software di tipo GIS proprietari o con licenza Open Source, quali ad esempio il software Quantum GIS un'applicazione GIS desktop open source - promossa e adottata dal Settore SIT della Città - per la gestione di dati geografici/territoriali molto simile nell'interfaccia utente e nelle funzionalità alle release di pacchetti GIS commerciali equivalenti, scaricabile alla seguente URL: <a href="http://hub.qgis.org/projects/quantum-gis/wiki/Download">http://hub.qgis.org/projects/quantum-gis/wiki/Download</a></p>
+        <p>Quantum GIS è mantenuto continuativamente dalla Comunità geomatica - un gruppo attivo di sviluppatori volontari - che rilascia periodicamente aggiornamenti e correzioni.</p>
+
+        <p><strong>Perché le statistiche sui residenti riportano sempre un valore maggiore uguale a 4?</strong></p>
+        <p>Le statistiche sui residenti e sulla loro età riportano sempre un valore nullo oppure maggiore-uguale a 4 in conformità con il Codice di deontologia e di buona condotta per i trattamenti di dati personali a scopi statistici e di ricerca scientifica effettuati nell'ambito del Sistema statistico nazionale, come da Provvedimento del Garante n.13 del 31 luglio 2002 (Gazzetta Ufficiale 1 ottobre 2002, n.230).</p>
+
+        <p><strong>Perché in alcuni Dataset demografici, relativi ad uno specifico anno, compaiono movimenti di popolazione con date in anni diversi ?</strong></p>
+        <p>I dataset dei movimenti riguardano eventi relativi ai residenti di Torino che avvengono dentro e fuori Torino. Nella rilevazione ed elaborazione dei dati sui movimenti si distinguono due momenti: la data dell’evento ( Nascita, morte, emigrazione ecc.) accaduto nell’anno considerato e la data di registrazione dell’evento stesso. La registrazione non è quasi mai contestuale all’evento stesso ma sovente differita ai mesi successivi , soprattutto per gli eventi che accadono fuori Torino ma riguardano soggetti residenti in Torino.</p>
+        <p>Per esempio un nato fuori Torino da genitori residenti in Torino, viene registrato nel comune di nascita ma una copia dell’atto di nascita viene inviata al Comune di residenza della madre dove l’atto viene trascritto. Solo allora viene registrata questa nascita fuori Torino da genitori residenti. Ancora, nel caso di un soggetto emigrato bisogna attendere che il comune di nuova destinazione segnali al comune di provenienza l’iscrizione del soggetto nelle liste dei suoi residenti. Solo allora il soggetto sarà considerato emigrato e cancellato dalle liste anagrafiche, cioè sarà registrata la sua emigrazione.</p>
+        <p>Per questo motivo i dati sui movimenti presentano date di registrazione in parte collocate anche su due anni, pur riferendosi ad un evento accaduto in uno specifico anno.</p>
+
+        <p><strong>Quali sono i formati con i quali vengono resi disponibili i dati ?</strong></p>
+        <p>Gli Opendata dalle Città di Torino sono pubblicati in tre formati "open", non sempre tutti disponibili per ogni Dataset:</p>
+        <ul>
+          <li>Il più classico dei formati è il <strong>CSV</strong>, Comma Separated Value, un formato ampiamente conosciuto e consultabile con numerosi software in distribuzione gratuita, dal più semplice Notepad ad OpenOfficeCalc. Il formato csv prevede che i valori dei campi siano divisi da caratteri precisi, quali per esempio, la virgola, il punto e virgola o il Tab. I valori nei files csv, forniti in queste pagine, vengono talvolta delimitati dal carattere virgola (‘,’), talvolta dal carattere punto e virgola (‘;’).</li>
+          <li>Il formato <strong>XML</strong>, eXtensible Markup Language, un formato usato per la modellazione della struttura di altri file. Di fatto l’XML decrive l’insieme di regole utili all’esportazione e quindi alla creazione di altri basi di dati e più in generale di applicazioni.</li>
+          <li>Diversi Dataset contenenti dati georeferenziati vengono forniti anche in formato vettoriale <strong>SHP</strong> (Shape) per la visualizzazione con software di tipo GIS. Lo "shapefile" indica in realtà una tripletta obbligatoria di file con estensioni differenti (.shp, .dbf, .shx) e nome uguale. Le triplette shapefile descrivono punti, poligoni o polilinee utilizzati ad esempio per rappresentare rispettivamente: un edificio; un quartiere e una strada. A ciascun file sono associati alcuni file legenda utili alla comprensione del dato: .avl; .lyr; .gvl.<br>
+          I file Shape possono essere letti utilizzando strumenti GIS desktop open source, che supportano lo standard WMS, quali ad esempio: gvSIG, QGIS, uDig, OpenJump, Google Earth</li>
+        </ul> 
+      </div>
+      {% endblock %}
+    </div>
+  </article>
+{% endblock %}
+
+{% block secondary %}{% endblock %}

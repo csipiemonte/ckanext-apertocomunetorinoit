@@ -1,4 +1,6 @@
 # encoding: utf-8
+from flask import Blueprint
+from ckan.lib import base
 
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
@@ -12,6 +14,9 @@ except ImportError:
 
 class ApertoComuneTorinoPlugin(plugins.SingletonPlugin, DefaultTranslation):
 
+    # IBlueprint
+    plugins.implements(plugins.IBlueprint, inherit=True)
+
     # IConfigurer
     plugins.implements(plugins.IConfigurer)
 
@@ -21,6 +26,14 @@ class ApertoComuneTorinoPlugin(plugins.SingletonPlugin, DefaultTranslation):
     # ITranslation
     if toolkit.check_ckan_version(min_version='2.5.0'):
       plugins.implements(plugins.ITranslation, inherit=True)
+
+    # -------- IBlueprint implementations -------- #
+
+    def get_blueprint(self):
+        blueprint = Blueprint('apertocomunetorinoit', self.__module__)
+
+        blueprint.add_url_rule(rule='/faq', view_func=self.render_faq_view, methods=[u'GET'])
+        return blueprint
 
     # -------- IConfigurer implementations -------- #
 
@@ -49,3 +62,6 @@ class ApertoComuneTorinoPlugin(plugins.SingletonPlugin, DefaultTranslation):
         ckanext-{extension name}, hence your pot, po and mo files should be
         named ckanext-{extension name}.mo'''
         return 'ckanext-{name}'.format(name='apertocomunetorinoit')
+
+    def render_faq_view(self):
+      return base.render('faq.html')
