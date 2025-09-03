@@ -1,0 +1,180 @@
+body {
+    background-color: #204D88;   /* colore blu CittÃ  di Torino */
+}
+
+[role=main], .main {
+    background-color: #fff;
+	min-height: 400px;
+}
+
+
+.masthead {
+    background: #ffffff;
+	padding: 25px 0;
+	}
+	
+.hero {
+    background-image: url(/images/aperto-testata-5.jpg);
+	background-size: cover;	
+	background-position: center;
+}
+
+.account-masthead {
+    background: #204D88;
+}
+
+
+.masthead .section {
+    float: left;
+	border-radius: 4px;
+    background-color: #639AE5;
+}
+
+.masthead .nav > li > a {
+	font-weight: 600;
+}
+
+.account-masthead .account ul li a.sub {
+    display: none;
+}
+
+.nav-pills > li + li {
+    margin: 0;
+}
+
+.nav-pills > li > a {
+    border-radius: 0;
+}
+
+.masthead .navigation .nav-pills > li:first-child > a {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    padding-right: 20px;
+}
+
+.masthead .navigation .nav-pills > li:last-child > a {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    padding-right: 20px;
+}
+
+
+.masthead .navigation .nav-pills li a:hover {
+	background-color: #204D88;
+}
+
+.masthead .navigation .nav-pills li.active a {
+	background-color: #204D88;
+}
+
+.logo img {
+    max-height: 80px !important;
+}
+
+.site-search {
+	display:none;
+}
+
+.module-search {
+    margin: 190px 0 0 0 !important;    /*margin: 190px 18% 0; */
+	padding: 1px !important;
+	color: #204D88 !important;
+	/**************************/
+	width: 100%;
+    position: relative;
+    top: 255px;
+    z-index: 1;
+	/**************************/
+}
+
+/********************************/
+.row2 {
+	    margin-top: 160px;
+}
+
+.col2, .col1 {
+	margin: 80px 0 20px 0;
+}
+
+@media screen and (max-width: 1000px) {
+	.col1 {
+		margin-top: 0;
+	}
+	.col2 {
+		margin-top: 205px;
+	}
+.module-search {
+    top: 370px;
+	}
+.header-image {
+    text-align: center;
+}	
+
+}
+
+
+/*********************************/
+
+.search-form {
+	/** background-color: #E7C856 !important; **/
+	background-color: rgba(231, 200, 86, 1) !important;
+}
+
+#dataset-search-form {
+		background-color:#FFF !important;
+}
+
+#organization-search-form {
+		background-color:#FFF !important;
+}
+
+#group-search-form {
+		background-color:#FFF !important;
+}
+
+
+.module-shallow .module-content:first-child {
+    padding-top: 4px;
+    padding-bottom: 4px;
+	/******************************/
+	width: 100%;
+	/******************************/
+}
+
+.tags {
+background-color: #CFAA22 !important;
+}
+
+.homepage .stats h3 {
+    text-align: center;
+    font-size: 1.8em;
+    color: #204D88;
+}
+
+.homepage .stats ul li {
+	width: 33%;
+	text-align: center;
+}
+
+.homepage .stats ul li a {
+    font-size:1.4em;
+	color: #639AE5;
+}
+
+.homepage .stats ul li a:hover {
+    text-decoration: underline;
+	color: #204D88;
+}
+
+.box {
+	border: 1px solid #E7C856;
+	box-shadow: 0 0 0 4px rgba(231, 200, 86, 0.05);
+}
+
+.media-overlay {
+    display: none;
+}
+
+.site-footer {
+    background: #204D88;
+}
