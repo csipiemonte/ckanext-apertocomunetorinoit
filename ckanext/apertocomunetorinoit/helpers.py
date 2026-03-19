@@ -8,6 +8,7 @@ Functions utilizzate nei template di AperTO che estendono quelli di CKAN.
 import ckan.lib.helpers as h
 
 from ckan.common import ungettext
+from ckan.common import config
 from ckan.model import Session, meta, Package, TrackingSummary
 
 from sqlalchemy.sql import func
@@ -86,3 +87,6 @@ def dataset_tracking_views_sum():
       if row['total_count'] != None:
         total_count = row['total_count']
     return total_count
+
+def get_base_url():
+  return config.get('ckan.site_url')
