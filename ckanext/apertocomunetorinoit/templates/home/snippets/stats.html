@@ -1,7 +1,7 @@
 {# Differisce dal template CKAN per il titolo del box, per la rimozione delle statistiche sulle organizzazioni e per l'aggiunta di quella sulle visite complessive dei datasets. #}
 
 {% set stats = h.get_site_statistics() %}
-{% set count = h.dataset_tracking_views_sum() %}
+{% set count = h.get_total_views() %}
 
 <div class="box stats">
   <div class="inner">
@@ -11,14 +11,14 @@
     <ul>
       {% block stats_group %}
       <li>
-        <a href="{{ h.url_for(controller='package', action='search') }}">
+        <a href="{{ h.url_for(controller='dataset', action='search') }}">
           <strong>{{ h.SI_number_span(stats.dataset_count) }}</strong>
           {{ _('dataset') if stats.dataset_count == 1 else _('datasets') }}
         </a>
       </li>
       <li>
-        <a href="{{ h.url_for(controller='package', action='search') }}">
-          <strong>{{ h.SI_number_span(count) }}</strong>
+        <a href="{{ h.url_for(controller='dataset', action='search') }}">
+          <strong>{{ h.SI_number_span(count) if count else '-' }}</strong>
           {{ _('dataset views') }}<br><small>({{ _('from date') }} 22/10/2019)</small>
         </a>
       </li>

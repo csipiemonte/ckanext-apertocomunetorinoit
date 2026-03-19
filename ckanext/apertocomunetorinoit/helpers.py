@@ -6,6 +6,7 @@ Functions utilizzate nei template di AperTO che estendono quelli di CKAN.
 '''
 
 import ckan.lib.helpers as h
+import ckan.model as model
 
 from ckan.common import ungettext
 from ckan.common import config
@@ -90,3 +91,9 @@ def dataset_tracking_views_sum():
 
 def get_base_url():
   return config.get('ckan.site_url')
+
+def get_total_views():
+  '''
+  Restituisce il numero delle visualizzazioni totali salvato in system_info 'ckan.total_views'
+  '''
+  return model.get_system_info('ckan.total_views')
