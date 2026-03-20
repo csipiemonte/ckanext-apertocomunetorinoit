@@ -10,6 +10,7 @@
   overflow: visible;
   text-align: right;
   font-weight: bold;
+  vertical-align: bottom;
 }
  
 .aperto-download {
